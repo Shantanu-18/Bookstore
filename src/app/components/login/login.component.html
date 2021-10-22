@@ -1,0 +1,118 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+   <mat-card fxLayout="column" fxLayoutAlign="center center" class="image_card">
+      <div>
+         <img src="../../../assets/images/2766594.png" class="image">
+      </div>
+      <div class="heading">
+         Online Book Shopping
+      </div>
+   </mat-card>
+
+   <mat-card class="login_card">
+      <mat-tab-group animationDuration="0ms">
+
+         <mat-tab label="LOGIN">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" fxLayout="column" fxLayoutAlign="space-around">
+
+               <mat-form-field appearance="outline" class="form-group" style="padding-top: 22px;">
+                  <mat-label>Email Id</mat-label>
+                  <input matInput type="email" formControlName="email"
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="on" />
+                  <mat-error *ngIf="submitted && f.email.errors">
+                     <div *ngIf="f.email.errors.required">Email is required</div>
+                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline" class="form-group">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" class="form-control" [type]="hide?'password':'text'"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="on" />
+                  <button matSuffix mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
+                     <mat-icon>visibility_off</mat-icon>
+                  </button>
+                  <mat-error *ngIf="submitted && f.password.errors">
+                     <div *ngIf="f.password.errors.required">Password is required</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <button mat-button class="forgotPass_button">Forgot Password?</button>
+
+               <button mat-raised-button style="background-color: #A03037; color: aliceblue;">Login</button>
+
+            </form>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" style="padding: 20px 0px 20px 0px;">
+               <div style="width: 60px; opacity: 0.5;">
+                  <hr>
+               </div>
+               <div style="font-weight: 500; font-size: 14px;">
+                  OR
+               </div>
+               <div style="width: 60px; opacity: 0.5;">
+                  <hr>
+               </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+               <button mat-button style="background-color: #4266B2; color: aliceblue;">Facebook</button>
+               <button mat-button style="background-color: #F5F5F5;">Google</button>
+            </div>
+
+         </mat-tab>
+
+         <mat-tab label="SINGUP">
+
+            <form fxLayout="column" fxLayoutAlign="space-around" [formGroup]="registerForm" (ngSubmit)="onSignup()">
+
+               <mat-form-field appearance="outline" class="form-group" style="padding-top: 22px;">
+                  <mat-label>First Name</mat-label>
+                  <input matInput type="text" formControlName="fullName"
+                     [ngClass]="{ 'is-invalid': submitted && r.fullName.errors }">
+                  <mat-error *ngIf="submitted && r.fullName.errors">
+                     <div *ngIf="r.fullName.errors.required">Name is required</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline">
+                  <mat-label>Email Id</mat-label>
+                  <input matInput type="text" formControlName="email"
+                     [ngClass]="{ 'is-invalid': submitted && r.email.errors }" />
+                  <mat-error *ngIf="submitted && r.email.errors">
+                     <div *ngIf="r.email.errors.required">Email is required</div>
+                     <div *ngIf="r.email.errors.email">Email must be a valid email address</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline" class="form-group">
+                  <mat-label>Password</mat-label>
+                  <input [type]="hide?'password':'text'" matInput formControlName="password" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && r.password.errors }" />
+                  <button matSuffix mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
+                     <mat-icon>visibility_off</mat-icon>
+                  </button>
+                  <mat-error *ngIf="submitted && r.password.errors">
+                     <div *ngIf="r.password.errors.required">Password is required</div>
+                     <div *ngIf="r.password.errors.minlength">Password must be at least 6 characters</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline" class="form-group">
+                  <mat-label>Mobile Number</mat-label>
+                  <input type="phone number" matInput formControlName="mobileNumber" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && r.mobileNumber.errors }" />
+                  <mat-error *ngIf="submitted && r.mobileNumber.errors">
+                     <div *ngIf="r.mobileNumber.errors.required">Mobile Number is required</div>
+                     <div *ngIf="r.mobileNumber.errors.pattern">Please, Enter 10 digit Mobile Number</div>
+                  </mat-error>
+               </mat-form-field>
+
+               <button mat-raised-button style="background-color: #A03037; color: aliceblue;">Signup</button>
+               <!-- <label for="name">Name</label>
+               <input id="name" type="text"> -->
+
+            </form>
+         </mat-tab>
+
+      </mat-tab-group>
+   </mat-card>
+</div>
