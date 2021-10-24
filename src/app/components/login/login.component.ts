@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/UserServices/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   registerForm!: FormGroup;
-  submitted = false;
+  loginSubmitted = false;
+  signupSubmitted = false;
   hide: boolean = true;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private userService: UserService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -37,11 +40,56 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.submitted = true;
+    this.loginSubmitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+    else {
+      let reqPayload = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+
+      console.log(this.loginForm.value);
+
+      this.userService.loginService(reqPayload).subscribe((res: any) => {
+        console.log(res);
+
+        console.log(res.message);
+        this.snackbar.open(res.message, '', { duration: 3000 });
+      }, error => {
+        console.log(error);
+        this.snackbar.open(error, '', { duration: 3000 });
+      });
+    }
   }
 
   onSignup() {
-    this.submitted = true;
+    this.signupSubmitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+    else {
+      let reqPayload = {
+        fullName: this.registerForm.value.fullName,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        phone: this.registerForm.value.mobileNumber,
+      }
+      console.log(this.registerForm.value);
+
+      this.userService.signupService(reqPayload).subscribe((res: any) => {
+        console.log(res);
+
+        console.log(res.message);
+        this.snackbar.open(res.message, '', { duration: 3000 });
+      }, error => {
+        console.log(error);
+        this.snackbar.open(error, '', { duration: 3000 });
+      });
+    }
   }
 
 }
