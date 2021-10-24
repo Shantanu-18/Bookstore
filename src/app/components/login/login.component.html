@@ -12,29 +12,30 @@
       <mat-tab-group animationDuration="0ms">
 
          <mat-tab label="LOGIN">
+
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()" fxLayout="column" fxLayoutAlign="space-around">
 
-               <mat-form-field appearance="outline" class="form-group" style="padding-top: 22px;">
-                  <mat-label>Email Id</mat-label>
-                  <input matInput type="email" formControlName="email"
-                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="on" />
-                  <mat-error *ngIf="submitted && f.email.errors">
-                     <div *ngIf="f.email.errors.required">Email is required</div>
-                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                  </mat-error>
-               </mat-form-field>
+               <label for="email" style="padding-top: 22px;">Email Id</label>
+               <input id="email" type="email" formControlName="email"
+                  [ngClass]="{ 'is-invalid': loginSubmitted && f.email.errors }" autocomplete="on"
+                  style="height: 25px;" />
+               <mat-error *ngIf="loginSubmitted && f.email.errors">
+                  <div *ngIf="f.email.errors.required" style="font-size: 10px;">Email is required</div>
+                  <div *ngIf="f.email.errors.email" style="font-size: 10px;">Email must be a valid email address</div>
+               </mat-error>
 
-               <mat-form-field appearance="outline" class="form-group">
-                  <mat-label>Password</mat-label>
-                  <input matInput formControlName="password" class="form-control" [type]="hide?'password':'text'"
-                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="on" />
-                  <button matSuffix mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
-                     <mat-icon>visibility_off</mat-icon>
+               <label for="password" style="padding-top: 22px;">Password</label>
+               <div class="password_field">
+                  <input matInput id="password" [type]="hide?'password':'text'" formControlName="password"
+                     class="inputPass" [ngClass]="{ 'is-invalid': signupSubmitted && f.password.errors }" />
+                  <button mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
+                     <mat-icon style="font-size: 15px;">visibility_off</mat-icon>
                   </button>
-                  <mat-error *ngIf="submitted && f.password.errors">
-                     <div *ngIf="f.password.errors.required">Password is required</div>
-                  </mat-error>
-               </mat-form-field>
+               </div>
+               <mat-error *ngIf="loginSubmitted && f.password.errors">
+                  <div *ngIf="f.password.errors.required" style="font-size: 10px;">Password is required</div>
+               </mat-error>
+
 
                <button mat-button class="forgotPass_button">Forgot Password?</button>
 
@@ -64,52 +65,47 @@
 
             <form fxLayout="column" fxLayoutAlign="space-around" [formGroup]="registerForm" (ngSubmit)="onSignup()">
 
-               <mat-form-field appearance="outline" class="form-group" style="padding-top: 22px;">
-                  <mat-label>First Name</mat-label>
-                  <input matInput type="text" formControlName="fullName"
-                     [ngClass]="{ 'is-invalid': submitted && r.fullName.errors }">
-                  <mat-error *ngIf="submitted && r.fullName.errors">
-                     <div *ngIf="r.fullName.errors.required">Name is required</div>
-                  </mat-error>
-               </mat-form-field>
+               <label for="fullName" style="padding-top: 15px;">First Name</label>
+               <input id="fullName" type="text" formControlName="fullName"
+                  [ngClass]="{ 'is-invalid': signupSubmitted && r.fullName.errors }" style="height: 25px;" />
+               <mat-error *ngIf="signupSubmitted && r.fullName.errors">
+                  <div *ngIf="r.fullName.errors.required" style="font-size: 10px;">Name is required</div>
+               </mat-error>
 
-               <mat-form-field appearance="outline">
-                  <mat-label>Email Id</mat-label>
-                  <input matInput type="text" formControlName="email"
-                     [ngClass]="{ 'is-invalid': submitted && r.email.errors }" />
-                  <mat-error *ngIf="submitted && r.email.errors">
-                     <div *ngIf="r.email.errors.required">Email is required</div>
-                     <div *ngIf="r.email.errors.email">Email must be a valid email address</div>
-                  </mat-error>
-               </mat-form-field>
+               <label for="email" style="padding-top: 15px;">Email Id</label>
+               <input id="email" type="email" formControlName="email"
+                  [ngClass]="{ 'is-invalid': signupSubmitted && r.email.errors }" style="height: 25px;" />
+               <mat-error *ngIf="signupSubmitted && r.email.errors">
+                  <div *ngIf="r.email.errors.required" style="font-size: 10px;">Email is required</div>
+                  <div *ngIf="r.email.errors.email" style="font-size: 10px;">Email must be a valid email address</div>
+               </mat-error>
 
-               <mat-form-field appearance="outline" class="form-group">
-                  <mat-label>Password</mat-label>
-                  <input [type]="hide?'password':'text'" matInput formControlName="password" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && r.password.errors }" />
-                  <button matSuffix mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
-                     <mat-icon>visibility_off</mat-icon>
+               <label for="password" style="padding-top: 15px;">Password</label>
+               <div class="password_field">
+                  <input matInput id="password" [type]="hide?'password':'text'" formControlName="password"
+                     class="inputPass" [ngClass]="{ 'is-invalid': signupSubmitted && r.password.errors }" />
+                  <button mat-icon-button style="opacity: 0.5;" (click)="showPassword()">
+                     <mat-icon style="font-size: 15px;">visibility_off</mat-icon>
                   </button>
-                  <mat-error *ngIf="submitted && r.password.errors">
-                     <div *ngIf="r.password.errors.required">Password is required</div>
-                     <div *ngIf="r.password.errors.minlength">Password must be at least 6 characters</div>
-                  </mat-error>
-               </mat-form-field>
+               </div>
+               <mat-error *ngIf="signupSubmitted && r.password.errors">
+                  <div *ngIf="r.password.errors.required" style="font-size: 10px;">Password is required</div>
+                  <div *ngIf="r.password.errors.minlength" style="font-size: 10px;">Password must be at least 6
+                     characters</div>
+               </mat-error>
 
-               <mat-form-field appearance="outline" class="form-group">
-                  <mat-label>Mobile Number</mat-label>
-                  <input type="phone number" matInput formControlName="mobileNumber" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && r.mobileNumber.errors }" />
-                  <mat-error *ngIf="submitted && r.mobileNumber.errors">
-                     <div *ngIf="r.mobileNumber.errors.required">Mobile Number is required</div>
-                     <div *ngIf="r.mobileNumber.errors.pattern">Please, Enter 10 digit Mobile Number</div>
-                  </mat-error>
-               </mat-form-field>
-
-               <button mat-raised-button style="background-color: #A03037; color: aliceblue;">Signup</button>
-               <!-- <label for="name">Name</label>
-               <input id="name" type="text"> -->
-
+               <label for="mobileNumber" style="padding-top: 15px;">Mobile Number</label>
+               <input id="mobileNumber" type="text" formControlName="mobileNumber" style="height: 25px;"
+                  [ngClass]="{ 'is-invalid': signupSubmitted && r.mobileNumber.errors }" />
+               <mat-error *ngIf="signupSubmitted && r.mobileNumber.errors">
+                  <div *ngIf="r.mobileNumber.errors.required" style="font-size: 10px;">Mobile Number is required</div>
+                  <div *ngIf="r.mobileNumber.errors.pattern" style="font-size: 10px;">Please, Enter 10 digit Mobile
+                     Number</div>
+               </mat-error>
+               <div style="padding-top: 15px;">
+                  <button mat-raised-button style="background-color: #A03037; color: aliceblue; width: 100%;">Signup
+                  </button>
+               </div>
             </form>
          </mat-tab>
 
