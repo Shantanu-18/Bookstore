@@ -25,6 +25,8 @@
 
 ::ng-deep .mat-ink-bar {
    height: 5px !important;
+   width : 22px !important;
+   left: 45px !important;
 }
 
 ::ng-deep .mat-tab-label {
@@ -45,7 +47,6 @@
 .forgotPass_button {
    font-size    : xx-small;
    align-self   : flex-end;
-   margin-top   : -27px;
    opacity      : 0.5;
    padding-right: -35px;
    padding      : 0px;
@@ -55,9 +56,10 @@
    padding      : 30px;
    border-radius: 10px;
    width        : 300px;
-   height       : 370px;
+   height       : auto;
    border       : 1px solid;
    border-color : gainsboro;
+   text-overflow: clip;
 }
 
 .image_card {
@@ -65,4 +67,24 @@
    border-radius: 10px;
    border       : 1px solid;
    border-color : gainsboro;
+   height: 345px;
+}
+
+.showPass_button {
+   opacity: 0.5;
+   float  : right;
+}
+
+.password_field {
+   border     : 0.5px solid lightslategrey;
+   height     : 31px;
+   display    : flex;
+   align-items: center;
+}
+
+.inputPass {
+   height : 15px;
+   width  : 250px;
+   outline: none;
+   border : none;
 }
