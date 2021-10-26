@@ -18,12 +18,18 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { GetAllBooksComponent } from './components/get-all-books/get-all-books.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    FooterComponent,
+    HomeComponent,
+    GetAllBooksComponent
   ],
   imports: [
     BrowserModule,
