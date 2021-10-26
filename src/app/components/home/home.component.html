@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+   <img src="../../../assets/images/education.svg" style="padding: 0px 6px 0px 201px;">
+   <span>Bookstore</span>
+
+   <div class="search_bar">
+      <mat-icon class="search_icon">search</mat-icon>
+      <input type="text" placeholder="Search..." class="search_input">
+   </div>
+
+   <span style="flex: 1 1 auto;"></span>
+   <div style="margin-right: 187px;">
+      <button mat-icon-button style="margin-right:60px;">
+         <mat-icon>perm_identity</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+         <div fxLayout="column">
+            <i class="material-icons-outlined">shopping_cart</i>
+            <span class="button_labels">Cart</span>
+         </div>
+      </button>
+   </div>
+</mat-toolbar>
+
+<div>
+   <router-outlet></router-outlet>
+</div>
+<!-- <app-footer></app-footer> -->
