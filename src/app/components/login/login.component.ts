@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/UserServices/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   signupSubmitted = false;
   hide: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
 
         console.log(res.message);
         this.snackbar.open(res.message, '', { duration: 3000 });
+        this.router.navigateByUrl('/home')
       }, error => {
         console.log(error);
         this.snackbar.open(error, '', { duration: 3000 });
@@ -85,6 +87,11 @@ export class LoginComponent implements OnInit {
 
         console.log(res.message);
         this.snackbar.open(res.message, '', { duration: 3000 });
+
+        localStorage.setItem('fullName', res.result.fullName);
+        localStorage.setItem('email', res.result.email);
+        localStorage.setItem('phoneNumber', res.result.phone);
+        localStorage.setItem('password', res.result.password);
       }, error => {
         console.log(error);
         this.snackbar.open(error, '', { duration: 3000 });
