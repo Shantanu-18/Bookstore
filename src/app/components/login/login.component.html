@@ -39,7 +39,7 @@
 
                <button mat-button class="forgotPass_button">Forgot Password?</button>
 
-               <button mat-raised-button style="background-color: #A03037; color: aliceblue;">Login</button>
+               <button mat-raised-button style="background-color: #A03037; color: aliceblue;" (click)="onLogin()">Login</button>
 
             </form>
             <div fxLayout="row" fxLayoutAlign="space-evenly center" style="padding: 20px 0px 20px 0px;">
@@ -103,7 +103,7 @@
                      Number</div>
                </mat-error>
                <div style="padding-top: 15px;">
-                  <button mat-raised-button style="background-color: #A03037; color: aliceblue; width: 100%;">Signup
+                  <button mat-raised-button style="background-color: #A03037; color: aliceblue; width: 100%;" (click)="onSignup()">Signup
                   </button>
                </div>
             </form>
