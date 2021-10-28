@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
         console.log(res.message);
         this.snackbar.open(res.message, '', { duration: 3000 });
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/home/allbooks')
       }, error => {
         console.log(error);
         this.snackbar.open(error, '', { duration: 3000 });
