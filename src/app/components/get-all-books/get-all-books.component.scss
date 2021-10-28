@@ -5,6 +5,8 @@
    border       : 1px solid #E2E2E2;
    border-radius: 3px;
    opacity      : 1;
+   padding-top  : 0px;
+   cursor       : pointer;
 }
 
 .book_img {
@@ -20,6 +22,7 @@
    background-color: #F5F5F5;
    margin-left     : -16px;
    margin-right    : -16px;
+   margin-top      : -16px;
 }
 
 .discount_price {
@@ -36,10 +39,37 @@
 .book_rating {
    background-color: #388E3C;
    border-radius   : 2px;
-   display: flex;
+   display         : flex;
+   flex-direction  : row;
+   align-items     : center;
+   justify-content : space-evenly;
+   width           : 33px;
+   height          : 16px;
+}
+
+.body {
+   display      : flex;
+   flex-flow    : row wrap;
+   box-sizing   : border-box;
+   place-content: center;
+   align-items  : center;
+   gap          : 50px;
+}
+
+.container {
+   margin: 70px 100px;
+}
+
+.book_num {
+   display       : flex;
+   align-items   : baseline;
    flex-direction: row;
-   align-items: center;
-   justify-content: space-evenly;
-   width: 33px;
-   height: 16px;
+   gap           : 6px;
+}
+
+::ng-deep {
+   .tooltip {
+      background: #555252 !important;
+      margin-top: -130px !important;
+   }
 }
