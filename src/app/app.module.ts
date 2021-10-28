@@ -21,6 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { GetAllBooksComponent } from './components/get-all-books/get-all-books.component';
+import { MatSelectModule } from '@angular/material/select';
+import { QuickViewComponent } from './components/quick-view/quick-view.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
     ForgotPasswordComponent,
     FooterComponent,
     HomeComponent,
-    GetAllBooksComponent
+    GetAllBooksComponent,
+    QuickViewComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,10 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
     MatDividerModule,
     MatToolbarModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,80 @@
+<div class="container" fxLayout="column" fxLayoutGap="25px">
+   <div>
+      <!-- <p class="head0">Home</p> -->
+      <button mat-button style=" padding-right: 0px; min-width: 50px;" (click)='homeButton()'
+         class="head0">Home</button>
+      <p class="head1">/ Book(01)</p>
+   </div>
+   <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="50px" fxLayout.lt-md="column">
+      <div fxLayout="column" fxLayoutGap="15px">
+         <img class="book" src="../../../assets/images/Image 7@2x.png">
+         <div fxLayout="row" fxLayoutAlign="space-between start">
+            <button (click)="addtobagbuttonhide()" *ngIf="addToBagHide" mat-flat-button type="submit" color="primary"
+               class="addtobagbutton">Add to bag</button>
+            <div *ngIf="countHide" fxLayout="row">
+               <button mat-icon-button (click)="countdecrease()">
+                  <i class="material-icons-outlined">remove_circle_outline</i>
+               </button>
+               <p class="count">{{orderCount}}</p>
+               <button mat-icon-button (click)="countincrease()" class="plusminus">
+                  <i class="material-icons-outlined">add_circle_outline</i>
+               </button>
+            </div>
+            <button (click)="addtowishlist()" mat-flat-button type="submit" color="primary"
+               class="wishlistbutton">Wishlist</button>
+         </div>
+      </div>
+      <div style="width: 600px;">
+         <p class="bookname">{{data.bookName}}</p>
+         <p class="author">by {{data.author}}</p>
+         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+            <div class="ratingbox">
+               <p class="rating">4.5</p>
+               <mat-icon class="rating_star">star</mat-icon>
+            </div>
+            <p class="ratingno">(20)</p>
+         </div>
+
+         <p class="actualprice" *ngIf="data.discountPrice==0">Rs. {{data.price}}</p>
+         <div fxLayout="row" fxLayoutGap="10px">
+            <p class="actualprice" *ngIf="data.discountPrice>0">Rs. {{data.price-data.discountPrice}}</p>
+            <p class="discountPrice" *ngIf="data.discountPrice>0"><del>Rs. {{data.price}}</del></p>
+         </div>
+         <hr>
+         <ul class="list">
+            <li class="bookdetails">Book Detail</li>
+         </ul>
+         <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores quae pariatur
+            laboriosam minima architecto sint facere, eaque dolore est voluptate consequatur et tempora ex magnam ipsam
+            assumenda ad beatae quasi error dolores aut culpa saepe deserunt. Sed, optio. Commodi itaque blanditiis
+            sequi est incidunt eveniet quidem accusantium, id quas tempora.</p>
+         <hr>
+         <p class="feedbackhead">Customer Feedback</p>
+         <div class="reviewbox" fxLayout="column">
+            <p class="ratinghead">Overall rating</p>
+            <div fxLayout="row" style="color: #707070;">
+               <button mat-icon-button>
+                  <i class="material-icons-outlined">star_outline</i>
+               </button>
+               <button mat-icon-button style=" width: 35px !important;">
+                  <i class="material-icons-outlined">star_outline</i>
+               </button>
+               <button mat-icon-button>
+                  <i class="material-icons-outlined">star_outline</i>
+               </button>
+               <button mat-icon-button>
+                  <i class="material-icons-outlined">star_outline</i>
+               </button>
+               <button mat-icon-button>
+                  <i class="material-icons-outlined">star_outline</i>
+               </button>
+            </div>
+            <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20" [(ngModel)]="review"
+               placeholder="write your review" class="searchinput" [ngStyle.lt-md]="{'width.VW': 80}"></textarea>
+            <button class="reviewsubmit" mat-flat-button color="primary">
+               <p class="submitbotton">Submit</p>
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
