@@ -16,4 +16,11 @@ export class HttpService {
     return this.http.get(url,isHeaderRequired && headers)
   }
 
+  PutService(url: string, data: any = null, isHeaderRequired: any = false, headers: any = null) {
+    return this.http.post(url, data, isHeaderRequired && headers)
+  }
+
+  DeleteService(url: string, data: any = null, isHeaderRequired: any = false, headers: any = null) {
+    return this.http.post(url, data, isHeaderRequired && headers)
+  }
 }
