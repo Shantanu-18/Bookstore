@@ -1,33 +1,54 @@
-<mat-card class="card">
-
-   <div class="book_img_div">
-      <img src="./../../../assets/images/Image 7@2x.png" alt="book" class="book_img">
+<div class="container" [ngStyle.xs]="{'margin-left.px':0,'margin-right.px':0}">
+   <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+      <div class="book_num">
+         <span style="font-size: 25px;">Books </span>
+         <span style="font-size: 12px; color: grey;">({{bookscount}} items)</span>
+      </div>
+      <div fxLayoutAlign="end" fxFlex>
+         <form class="filterform">
+            <mat-form-field appearance="outline">
+               <mat-select [(value)]="selectedValue">
+                  <mat-option *ngFor="let element of box" [value]="element.value">
+                     {{element.value}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </form>
+      </div>
    </div>
+   <div class="body">
+      <mat-card class="card" *ngFor='let book of bookList' matTooltip="QUICK VIEW" matTooltipClass="tooltip"
+         (click)="quickView(book)">
 
-   <div style="padding: 10px 0px 10px 0px;" fxLayout="column" fxLayoutGap="8px">
-      <div style="font: normal normal normal 14px/19px Roboto; color: #0A0102;">
-         Don't Make Me Think
-      </div>
+         <div class="book_img_div">
+            <img src="./../../../assets/images/Image 7@2x.png" alt="book" class="book_img">
+         </div>
 
-      <div style="font: normal normal normal 10px/13px Roboto; color: #878787;">
-         by Steve Krug
-      </div>
+         <div style="padding: 10px 0px 10px 0px;" fxLayout="column" fxLayoutGap="8px">
+            <div style="font: normal normal normal 14px/19px Roboto; color: #0A0102;">
+               {{book.bookName}}
+            </div>
 
-      <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign=" center">
-         <div class="book_rating">
-            <div style="font: normal normal bold 10px/13px Roboto; color: #FFFFFF;">4.5</div>
-            <div>
-               <mat-icon style="font-size: 10px; height: 4px; width: 10px; color: #FFFFFF;">star</mat-icon>
+            <div style="font: normal normal normal 10px/13px Roboto; color: #878787;">
+               by {{book.author}}
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign=" center">
+               <div class="book_rating">
+                  <div style="font: normal normal bold 10px/13px Roboto; color: #FFFFFF;">4.5</div>
+                  <div>
+                     <mat-icon style="font-size: 10px; height: 4px; width: 10px; color: #FFFFFF;">star</mat-icon>
+                  </div>
+               </div>
+               <div style="font: normal normal normal 10px/13px Roboto; color: #878787;">
+                  (20)
+               </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="8px">
+               <div class="book_price">Rs.{{book.price-book.discountPrice}}</div>
+               <div class="discount_price">Rs.{{book.price}}</div>
             </div>
          </div>
-         <div style="font: normal normal normal 10px/13px Roboto; color: #878787;">
-            (20)
-         </div>
-      </div>
-
-      <div fxLayout="row" fxLayoutGap="8px">
-         <div class="book_price">Rs.1500</div>
-         <div class="discount_price">Rs.2000</div>
-      </div>
+      </mat-card>
    </div>
-</mat-card>
