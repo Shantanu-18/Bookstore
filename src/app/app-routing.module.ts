@@ -5,6 +5,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { HomeComponent } from './components/home/home.component';
 import { GetAllBooksComponent } from './components/get-all-books/get-all-books.component';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: 'signup', component: LoginComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
     children: [
       { path: 'allbooks', component: GetAllBooksComponent },
       { path: 'quickview', component: QuickViewComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'cart', component: CartComponent },
     ]
   },
 ];
