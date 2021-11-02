@@ -8,20 +8,27 @@
       <input type="text" placeholder="Search..." class="search_input">
    </div>
 
-   <span style="flex: 1 1 auto;" ></span>
+   <span style="flex: 1 1 auto;"></span>
    <div style="margin-right: 187px;" [ngStyle.lg]="{'margin-right.px': 187}" [ngStyle.xs]="{'margin-right.px': 0}"
       [ngStyle.sm]="{'margin-right.px': 0}">
       <button mat-icon-button style="margin-right:60px;" [ngStyle.xs]="{'margin-right.px': 10}"
-         [ngStyle.sm]="{'margin-right.px': 10}" [ngStyle.lg]="{'margin-right.px': 60}">
+         [ngStyle.sm]="{'margin-right.px': 10}" [ngStyle.lg]="{'margin-right.px': 60}" [matMenuTriggerFor]="belowMenu">
          <div fxLayout="column">
             <i class="material-icons-outlined">perm_identity</i>
             <span class="button_labels">{{name}}</span>
          </div>
       </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+         <p style="padding: 15px 15px 0px 15px;">Hello, {{name}}</p>
+         <button mat-menu-item (click)='profileButton()'>Profile</button>
+         <button mat-menu-item>My Orders</button>
+         <button mat-menu-item>My Wishlist</button>
+      </mat-menu>
 
-      <button mat-icon-button>
+      <button mat-icon-button (click)="onCart()">
          <div fxLayout="column">
-            <i class="material-icons-outlined">shopping_cart</i>
+            <i class="material-icons-outlined" matBadge={{cartNumber}} matBadgeColor="accent"
+               matBadgeSize="small">shopping_cart</i>
             <span class="button_labels">Cart</span>
          </div>
       </button>
@@ -31,4 +38,5 @@
 <div>
    <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
+<div style="position: static; bottom: 0; width: 100%;">
+<app-footer></app-footer></div>
