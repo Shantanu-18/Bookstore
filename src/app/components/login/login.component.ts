@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
 
         console.log(res.message);
+        localStorage.setItem('token', res.result.accessToken);
         this.snackbar.open(res.message, '', { duration: 3000 });
         this.router.navigateByUrl('/home/allbooks')
       }, error => {
