@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,13 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
 import { MatSelectModule } from '@angular/material/select';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { CartComponent } from './components/cart/cart.component';
+import { AuthguardGuard } from './authguard.guard';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     GetAllBooksComponent,
-    QuickViewComponent
+    QuickViewComponent,
+    ProfileComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +62,13 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatSelectModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatRadioModule
   ],
-  providers: [],
+  providers: [AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
