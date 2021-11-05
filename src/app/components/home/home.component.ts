@@ -19,29 +19,33 @@ export class HomeComponent implements OnInit {
   }
 
   homeButton() {
-    this.router.navigateByUrl('/home/allbooks')
+    this.router.navigateByUrl('/home/allbooks');
   }
 
   profileButton() {
-    this.router.navigateByUrl('/home/profile')
+    this.router.navigateByUrl('/home/profile');
   }
-
+  
   onCart() {
     this.bookService.getCartItems().subscribe((res: any) => {
       console.log(res.result);
     },
-      (error) => console.log(error)
+    (error) => console.log(error)
     )
-
+    
     this.router.navigateByUrl('/home/cart')
   }
-
+  
   getCardNumber() {
     this.bookService.getCartItems().subscribe((res: any) => {
       this.cartNumber = res.result.length;
       console.log("length", res.result.length);
     },
-      (error) => console.log(error)
+    (error) => console.log(error)
     )
+  }
+
+  onWishlist() {
+    this.router.navigateByUrl('/home/wishlist');
   }
 }
