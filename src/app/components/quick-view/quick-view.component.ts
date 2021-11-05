@@ -13,7 +13,7 @@ export class QuickViewComponent implements OnInit {
   book: any;
   bookId: any;
   data: any;
-  orderCount = 0;
+  orderCount = 1;
   addToBagHide: boolean = true;
   countHide: boolean = false;
 
