@@ -7,18 +7,22 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: 'signup', component: LoginComponent },
   { path: 'forgotPassword', component: ForgotPasswordComponent },
-  { path: '', redirectTo: '/home/allbooks', pathMatch: 'full' },
+  { path: 'home', redirectTo: '/home/allbooks', pathMatch: 'full' },
+  { path: '', redirectTo: '/signup', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent,
     children: [
       { path: 'allbooks', component: GetAllBooksComponent },
       { path: 'quickview', component: QuickViewComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthguardGuard] },
+      { path: 'cart', component: CartComponent, canActivate: [AuthguardGuard] },
+      { path: 'wishlist', component: WishlistComponent, canActivate: [AuthguardGuard] }
     ]
   },
 ];
