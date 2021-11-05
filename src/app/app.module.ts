@@ -31,6 +31,7 @@ import { AuthguardGuard } from './authguard.guard';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatRadioModule } from '@angular/material/radio';
     GetAllBooksComponent,
     QuickViewComponent,
     ProfileComponent,
-    CartComponent
+    CartComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
