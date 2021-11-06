@@ -173,7 +173,7 @@ export class CartComponent implements OnInit {
     this.bookservice.orderplace(payload).subscribe(
       (response) => {
         console.log(response);
-        this.routes.navigateByUrl("/home/orderplaced")
+        this.routes.navigateByUrl("/home/orders")
       },
       (error) => console.log(error)
     )
