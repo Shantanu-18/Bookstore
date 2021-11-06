@@ -32,6 +32,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     QuickViewComponent,
     ProfileComponent,
     CartComponent,
-    WishlistComponent
+    WishlistComponent,
+    OrderPlacedComponent
   ],
   imports: [
     BrowserModule,

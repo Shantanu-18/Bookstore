@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AuthguardGuard } from './authguard.guard';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 
 const routes: Routes = [
   { path: 'signup', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'quickview', component: QuickViewComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthguardGuard] },
       { path: 'cart', component: CartComponent, canActivate: [AuthguardGuard] },
-      { path: 'wishlist', component: WishlistComponent, canActivate: [AuthguardGuard] }
+      { path: 'wishlist', component: WishlistComponent, canActivate: [AuthguardGuard] },
+      { path: 'orders', component: OrderPlacedComponent, canActivate: [AuthguardGuard] }
     ]
   },
 ];
